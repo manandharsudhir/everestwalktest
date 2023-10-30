@@ -1,0 +1,47 @@
+class ApiConstants {
+  static const String baseurl = 'https://cloudapp.vrittechnologies.com/api/';
+  static const String loginUser = 'token/create/';
+  static const String googleLogin = 'auth/google/';
+  static const String appleLogin = 'auth/apple/';
+  static const String refreshToken = 'token/refresh/';
+  static const String verifyToken = 'token/verify/';
+  static const String sendOtp = 'user/send_otp/';
+  static const String verifyOtp = 'user/verify-otp/';
+  static const String forgetPassword = 'user/forget_password/';
+  static const String getLoggedInUser = 'user/me/';
+  static const String successStory = 'success-story/';
+  static const String courses = 'university-course/';
+  static const String university = 'university/';
+  static const String invoice = 'invoice/';
+  static const String signup = 'user/signup/';
+  static const String verifyAccount = 'user/verify_account/';
+  static const String wishlist = 'wishlist/';
+  static const String featured = 'featured/';
+  static const String community = 'community-posts/';
+  static String getCommunityPostById(id) => 'community-posts/$id';
+  static const String degreeType = 'user/degree-type-list/';
+  static const String preferedCourseList = 'user/preferred-course-list/';
+  static const String countriesList = 'country/';
+  static const String preferences = 'user/setup-study-preference/';
+  static const String updateProfile = 'user/update-profile/';
+  static const String setEnglishTestScore = 'user/setup-english-test-score/';
+  static const String setAptitudeTestScore = 'user/setup-aptitude-test-score/';
+  static const String likePost = 'posts-likes/';
+  static const String comments = 'posts-comment/';
+  static const String appliedStudent = 'applied-student/';
+  static const String visaApplicant = 'visa-applicant/';
+  static const String visaTypes = 'visa-type';
+  static const String collegeVisaType =
+      'looking-for-university-college-visa-type/';
+  static const String search = 'university-course/search/';
+  static const String documentStore = 'document/document-store';
+  static const String document = 'document/';
+  static String applyVisaForUniversity(id) => 'university-course/$id/apply/';
+  static const String notifications = 'notification/';
+  static const String applyDirectVisa = 'visa-applicant/';
+  static const String deleteUser = 'user/delete-account/';
+  static const String savePost = 'saved-post/';
+  static const String payViaKhalti = 'invoice/pay-via-khalti/';
+  static const String payViaEsewa = 'invoice/pay-via-esewa/';
+  static const String payViaStripe = 'invoice/pay-via-stripe/';
+}
