@@ -1,5 +1,6 @@
-import 'package:abroadsathi/core/configs/spacing_size.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/configs/spacing_size.dart';
 
 class PaginatedErrorWidget extends StatelessWidget {
   final String title;

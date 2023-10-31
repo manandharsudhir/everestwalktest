@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:developer';
-import 'package:abroadsathi/core/widgets/toast/toast.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../core/widgets/toast/toast.dart';
 import '../model/paginated_state_model.dart';
 
 class PaginationNotifier<T> extends StateNotifier<PaginationState<T>> {
