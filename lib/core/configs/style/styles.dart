@@ -9,7 +9,9 @@ class AppTheme {
     useMaterial3: true,
     scaffoldBackgroundColor: Palette.background,
     appBarTheme: const AppBarTheme(
-        surfaceTintColor: Colors.transparent, color: Colors.white),
+      surfaceTintColor: Colors.transparent,
+      color: Palette.background,
+    ),
     textTheme: TextTheme(
         displayLarge: AppTextStyle.heading1,
         displayMedium: AppTextStyle.heading2,

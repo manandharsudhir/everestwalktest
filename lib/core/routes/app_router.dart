@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:everestwalktest/features/error_screens/error_screen.dart';
 import 'package:everestwalktest/features/error_screens/nointernet_screen.dart';
+import 'package:everestwalktest/features/homepage/view/screen/home_screen.dart';
 import 'package:everestwalktest/features/splashScreen/view/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,7 @@ class AppRouter extends _$AppRouter {
           ],
         ),
         AutoRoute(page: NoInternetRoute.page),
-        AutoRoute(page: ErrorRoute.page)
+        AutoRoute(page: ErrorRoute.page),
+        AutoRoute(page: HomeRoute.page)
       ];
 }

@@ -5,8 +5,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../services/storage/storage_services.dart';
-
 part 'network_exception.freezed.dart';
 
 @freezed
