@@ -44,8 +44,10 @@ class UpcomingWidget extends HookConsumerWidget {
             ),
           );
         }, loading: () {
-          return ShimmerHelper()
-              .buildBasicShimmer(context: context, height: 200);
+          return ShimmerHelper().buildHorizontalListShimmer(
+            aspectRatio: 1.6,
+            itemHeight: 200,
+          );
         }, error: (e, st) {
           return CustomErrorWidget(errorMsg: e.toString(), onBtnTapped: () {});
         }, onGoingLoading: (data) {

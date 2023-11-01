@@ -19,7 +19,6 @@ class ViewAllGridWidget extends StatelessWidget {
       ),
       itemBuilder: (context, index) => Container(
         decoration: BoxDecoration(
-          color: Colors.red,
           borderRadius: BorderRadius.circular(8),
         ),
         clipBehavior: Clip.hardEdge,

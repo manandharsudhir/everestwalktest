@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../configs/spacing_size.dart';
@@ -73,6 +74,24 @@ class ShimmerHelper {
           );
         },
       ),
+    );
+  }
+
+  builGridShimmer(
+      {int itemCount = 10, bool isScrollable = false, Widget? shimmerItem}) {
+    return ResponsiveGridView.builder(
+      gridDelegate: const ResponsiveGridDelegate(
+        childAspectRatio: 2 / 3,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 8,
+        maxCrossAxisExtent: 200,
+      ),
+      itemBuilder: (context, index) =>
+          ShimmerHelper().buildBasicShimmer(context: context),
+      itemCount: itemCount,
+      padding: const EdgeInsets.all(20),
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
     );
   }
 }

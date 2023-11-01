@@ -118,7 +118,7 @@ class _SearchListWidgetState extends ConsumerState<SearchListWidget> {
                       movieList: items,
                     );
             },
-            loading: () => ShimmerHelper().buildListShimmer(itemHeight: 200),
+            loading: () => ShimmerHelper().builGridShimmer(),
             error: (e, stk) {
               return ErrorScreen(
                 function: () {
