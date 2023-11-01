@@ -1,16 +1,13 @@
 # everestwalktest
 
-A new Flutter project.
+This project uses TMDB api to create an flutter application
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Steps to run the project
+- Clone the project
+- Open in any prefered code editor
+- Run flutter pub get
+- Use the following command in terminal to fix code generation issue
+  flutter pub run build_runner watch --delete-conflicting-outputs
+  or
+  flutter pub run build_runner build --delete-conflicting-outputs
+- if the movies are not being fetched please check the api key inside the .env folder of the project and ensure the key is correct
