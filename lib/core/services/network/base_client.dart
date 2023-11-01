@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../../constants/api_constants.dart';
 import '../../models/exceptions/network_exception.dart';
@@ -16,7 +17,7 @@ class BaseClient {
   static BaseClient get instance => _instance;
 
   void _setupAuthHeaderInterceptor() {
-    _dio.interceptors.add(
+    _dio.interceptors.addAll([
       InterceptorsWrapper(
         onRequest: (RequestOptions options, RequestInterceptorHandler r) async {
           options.headers['Accept'] = "*/*";
@@ -28,7 +29,8 @@ class BaseClient {
           handler.next(e);
         },
       ),
-    );
+      PrettyDioLogger(requestBody: true)
+    ]);
   }
 
   final Dio _dio = Dio(BaseOptions(

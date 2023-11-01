@@ -1,3 +1,4 @@
+import 'package:everestwalktest/core/configs/style/text_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/configs/spacing_size.dart';
@@ -43,9 +44,7 @@ class PaginatedErrorItemWidget extends StatelessWidget {
                 ),
                 Text(
                   title,
-                  style: const TextStyle(
-                    color: Colors.black,
-                  ),
+                  style: AppTextStyle.heading6,
                 ),
               ],
             ),
@@ -58,9 +57,7 @@ class PaginatedErrorItemWidget extends StatelessWidget {
               ),
               Text(
                 title,
-                style: const TextStyle(
-                  color: Colors.black,
-                ),
+                style: AppTextStyle.heading6,
               ),
               Spacing.sizedBoxH_32(),
             ],

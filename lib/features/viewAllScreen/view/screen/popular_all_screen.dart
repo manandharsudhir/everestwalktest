@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:everestwalktest/features/shared/provider/movie/now_playing_provider.dart';
+import 'package:everestwalktest/features/shared/provider/movie/popular_movie_provider.dart';
 import 'package:everestwalktest/features/viewAllScreen/view/widget/all_screen_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -13,14 +13,14 @@ import '../../../pagination/widgets/paginated_loading_widget.dart';
 import '../widget/view_all_grid_widget.dart';
 
 @RoutePage()
-class NowPlayingAllScreen extends HookConsumerWidget {
-  const NowPlayingAllScreen({
+class PopularAllScreen extends HookConsumerWidget {
+  const PopularAllScreen({
     super.key,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(nowPlayingMovieProvider);
+    final state = ref.watch(popularMovieProvider);
     final scrollController = useScrollController();
     useMemoized(() {
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -29,16 +29,16 @@ class NowPlayingAllScreen extends HookConsumerWidget {
           double currentScroll = scrollController.position.pixels;
           double delta = MediaQuery.of(context).size.width * 0.20;
           if (maxScroll - currentScroll <= delta) {
-            ref.read(nowPlayingMovieProvider.notifier).fetchNextBatch();
+            ref.read(popularMovieProvider.notifier).fetchNextBatch();
           }
         });
       });
     });
     return AllScreenWidget(
-      title: "Now Playing",
+      title: "Popular Movies",
       body: RefreshIndicator(
         onRefresh: () async {
-          await ref.read(nowPlayingMovieProvider.notifier).fetchFirstBatch();
+          await ref.read(popularMovieProvider.notifier).fetchFirstBatch();
         },
         child: ListView(
           controller: scrollController,
@@ -49,7 +49,7 @@ class NowPlayingAllScreen extends HookConsumerWidget {
                     ? PaginatedEmptyWidget(
                         func: () {
                           ref
-                              .read(nowPlayingMovieProvider.notifier)
+                              .read(popularMovieProvider.notifier)
                               .fetchFirstBatch();
                         },
                       )
@@ -61,9 +61,7 @@ class NowPlayingAllScreen extends HookConsumerWidget {
               error: (e, stk) {
                 return ErrorScreen(
                   function: () {
-                    ref
-                        .read(nowPlayingMovieProvider.notifier)
-                        .fetchFirstBatch();
+                    ref.read(popularMovieProvider.notifier).fetchFirstBatch();
                   },
                   title: e.toString(),
                 );

@@ -9,4 +9,6 @@ abstract class MovieRepo {
       {required int page, Map<String, dynamic> filters});
   Future<List<MovieModel>> getUpcomingMovies(
       {required int page, Map<String, dynamic> filters});
+  Future<List<MovieModel>> similarMovies(
+      {required int page, required int id, Map<String, dynamic> filters});
 }

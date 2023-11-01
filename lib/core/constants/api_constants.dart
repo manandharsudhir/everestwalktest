@@ -5,4 +5,7 @@ class ApiConstants {
   static const String popular = "movie/popular";
   static const String trendingPerDay = "trending/movie/day";
   static const String upcoming = "movie/upcoming";
+  static const String search = "search/movie";
+  static String movie(int id) => "movie/$id";
+  static String similarMovies(int id) => "movie/$id/similar";
 }

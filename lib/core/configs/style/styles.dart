@@ -11,6 +11,8 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       surfaceTintColor: Colors.transparent,
       color: Palette.background,
+      titleTextStyle: AppTextStyle.heading5,
+      iconTheme: IconThemeData(color: Colors.white),
     ),
     textTheme: TextTheme(
         displayLarge: AppTextStyle.heading1,

@@ -1,3 +1,4 @@
+import 'package:everestwalktest/core/widgets/image_builder/lottie_animation_builder.dart';
 import 'package:flutter/material.dart';
 
 import '../configs/spacing_size.dart';
@@ -20,7 +21,9 @@ class CustomErrorWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset("assets/images/error.png"),
+        const LottieAnimationWidget(
+          url: "assets/animations/error.json",
+        ),
         Spacing.sizedBoxH_16(),
         Text(
           errorMsg,

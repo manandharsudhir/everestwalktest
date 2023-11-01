@@ -13,7 +13,7 @@ class SplashScreen extends HookWidget {
     useMemoized(() {
       Future.delayed(
         const Duration(seconds: 3),
-        () => context.router.replaceAll([HomeRoute()]),
+        () => context.router.replaceAll([const HomeRoute()]),
       );
     });
     return const Scaffold(

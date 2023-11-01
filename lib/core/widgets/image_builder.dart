@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:everestwalktest/core/widgets/image_builder/lottie_animation_builder.dart';
 import 'package:flutter/material.dart';
 
 class ImageBuilder extends StatelessWidget {
@@ -59,10 +60,8 @@ class ImageStaticWdget extends StatelessWidget {
   final double? size;
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      // logoH,
-      "assets/images/logo.png",
-      fit: BoxFit.contain,
+    return LottieAnimationWidget(
+      url: "assets/animations/error.json",
       height: size,
       width: size,
     );

@@ -92,4 +92,27 @@ class MovieRepoImpl extends MovieRepo {
       rethrow;
     }
   }
+
+  @override
+  Future<List<MovieModel>> similarMovies(
+      {required int page,
+      required int id,
+      Map<String, dynamic> filters = const {}}) async {
+    try {
+      final Map<String, dynamic> filter = {"page": page};
+      if (filters.isNotEmpty) {
+        filter.addAll(filters);
+      }
+      final response = await BaseClient.instance
+          .get(ApiConstants.similarMovies(id), queryParameters: filter);
+
+      return (response["results"] as List)
+          .map((e) => MovieModel.fromJson(e))
+          .toList();
+    } on NetworkExceptions catch (e) {
+      throw e.errorMessage;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

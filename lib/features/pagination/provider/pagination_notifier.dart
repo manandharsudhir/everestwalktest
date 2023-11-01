@@ -69,6 +69,7 @@ class PaginationNotifier<T> extends StateNotifier<PaginationState<T>> {
   Future<void> fetchFirstBatch() async {
     try {
       items = [];
+      pageNo = 1;
       state = const PaginationState.loading();
 
       final List<T> result = await fetchNextItems(0, pageNo);

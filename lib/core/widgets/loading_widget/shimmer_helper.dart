@@ -45,4 +45,34 @@ class ShimmerHelper {
       },
     );
   }
+
+  buildHorizontalListShimmer(
+      {int itemCount = 10,
+      double itemHeight = 100.0,
+      double aspectRatio = 1,
+      double padding = 16,
+      bool isScrollable = false,
+      Widget? shimmerItem}) {
+    return SizedBox(
+      height: itemHeight,
+      child: ListView.separated(
+        itemCount: itemCount,
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        padding: EdgeInsets.all(padding),
+        physics: isScrollable
+            ? const BouncingScrollPhysics()
+            : const NeverScrollableScrollPhysics(),
+        separatorBuilder: (context, index) => Spacing.sizedBoxW_08(),
+        itemBuilder: (context, index) {
+          return AspectRatio(
+            aspectRatio: aspectRatio,
+            child: shimmerItem ??
+                ShimmerHelper()
+                    .buildBasicShimmer(height: itemHeight, context: context),
+          );
+        },
+      ),
+    );
+  }
 }
