@@ -6,7 +6,7 @@ This project uses TMDB api to create an flutter application
 - Clone the project
 - Open in any prefered code editor
 - Run flutter pub get
-- Use the following command in terminal to fix code generation issue<br>
+- Use the following command in terminal to fix code generation issue
   flutter pub run build_runner watch --delete-conflicting-outputs
   or
   flutter pub run build_runner build --delete-conflicting-outputs
