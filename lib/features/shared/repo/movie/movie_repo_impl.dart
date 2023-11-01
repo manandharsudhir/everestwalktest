@@ -32,7 +32,7 @@ class MovieRepoImpl extends MovieRepo {
 
   @override
   Future<List<MovieModel>> getNowPlayingMovies(
-      {int page = 1, Map<String, dynamic> filters = const {}}) async {
+      {required int page, Map<String, dynamic> filters = const {}}) async {
     try {
       final Map<String, dynamic> filter = {"page": page};
       if (filters.isNotEmpty) {
@@ -40,6 +40,48 @@ class MovieRepoImpl extends MovieRepo {
       }
       final response = await BaseClient.instance
           .get(ApiConstants.nowPlaying, queryParameters: filter);
+
+      return (response["results"] as List)
+          .map((e) => MovieModel.fromJson(e))
+          .toList();
+    } on NetworkExceptions catch (e) {
+      throw e.errorMessage;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MovieModel>> getTrendingMovies(
+      {required int page, Map<String, dynamic> filters = const {}}) async {
+    try {
+      final Map<String, dynamic> filter = {"page": page};
+      if (filters.isNotEmpty) {
+        filter.addAll(filters);
+      }
+      final response = await BaseClient.instance
+          .get(ApiConstants.trendingPerDay, queryParameters: filter);
+
+      return (response["results"] as List)
+          .map((e) => MovieModel.fromJson(e))
+          .toList();
+    } on NetworkExceptions catch (e) {
+      throw e.errorMessage;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MovieModel>> getUpcomingMovies(
+      {required int page, Map<String, dynamic> filters = const {}}) async {
+    try {
+      final Map<String, dynamic> filter = {"page": page};
+      if (filters.isNotEmpty) {
+        filter.addAll(filters);
+      }
+      final response = await BaseClient.instance
+          .get(ApiConstants.upcoming, queryParameters: filter);
 
       return (response["results"] as List)
           .map((e) => MovieModel.fromJson(e))

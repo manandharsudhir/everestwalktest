@@ -22,6 +22,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: ErrorScreen(
           key: args.key,
           function: args.function,
+          showRefresh: args.showRefresh,
           animation: args.animation,
           subtitle: args.subtitle,
           title: args.title,
@@ -44,6 +45,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    NowPlayingAllRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const NowPlayingAllScreen(),
+      );
+    },
     SplashRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -59,6 +66,7 @@ class ErrorRoute extends PageRouteInfo<ErrorRouteArgs> {
   ErrorRoute({
     Key? key,
     required void Function() function,
+    bool showRefresh = true,
     String animation = "assets/animations/error.json",
     String subtitle = "Try refreshing",
     String title = "Something wrong occured",
@@ -68,6 +76,7 @@ class ErrorRoute extends PageRouteInfo<ErrorRouteArgs> {
           args: ErrorRouteArgs(
             key: key,
             function: function,
+            showRefresh: showRefresh,
             animation: animation,
             subtitle: subtitle,
             title: title,
@@ -84,6 +93,7 @@ class ErrorRouteArgs {
   const ErrorRouteArgs({
     this.key,
     required this.function,
+    this.showRefresh = true,
     this.animation = "assets/animations/error.json",
     this.subtitle = "Try refreshing",
     this.title = "Something wrong occured",
@@ -93,6 +103,8 @@ class ErrorRouteArgs {
 
   final void Function() function;
 
+  final bool showRefresh;
+
   final String animation;
 
   final String subtitle;
@@ -101,7 +113,7 @@ class ErrorRouteArgs {
 
   @override
   String toString() {
-    return 'ErrorRouteArgs{key: $key, function: $function, animation: $animation, subtitle: $subtitle, title: $title}';
+    return 'ErrorRouteArgs{key: $key, function: $function, showRefresh: $showRefresh, animation: $animation, subtitle: $subtitle, title: $title}';
   }
 }
 
@@ -155,6 +167,20 @@ class NoInternetRouteArgs {
   String toString() {
     return 'NoInternetRouteArgs{key: $key, onConnection: $onConnection}';
   }
+}
+
+/// generated route for
+/// [NowPlayingAllScreen]
+class NowPlayingAllRoute extends PageRouteInfo<void> {
+  const NowPlayingAllRoute({List<PageRouteInfo>? children})
+      : super(
+          NowPlayingAllRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NowPlayingAllRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

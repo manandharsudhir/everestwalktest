@@ -11,8 +11,9 @@ class PaginationNotifier<T> extends StateNotifier<PaginationState<T>> {
     required this.itemsPerBatch,
   }) : super(const PaginationState.loading());
 
-  final Future<List<T>> Function(int itemCount) fetchNextItems;
+  final Future<List<T>> Function(int itemCount, int page) fetchNextItems;
   final int itemsPerBatch;
+  int pageNo = 1;
 
   List<T> items = [];
 
@@ -29,6 +30,9 @@ class PaginationNotifier<T> extends StateNotifier<PaginationState<T>> {
 
   void updateData(List<T> result) {
     noMoreItems = result.length < itemsPerBatch;
+    if (!noMoreItems) {
+      pageNo = pageNo + 1;
+    }
     if (!isFetchFirst) {
       if (noMoreItems) {
         showErrorToast("No More Items Found");
@@ -67,7 +71,7 @@ class PaginationNotifier<T> extends StateNotifier<PaginationState<T>> {
       items = [];
       state = const PaginationState.loading();
 
-      final List<T> result = await fetchNextItems(0);
+      final List<T> result = await fetchNextItems(0, pageNo);
       updateData(result);
     } catch (e, stk) {
       state = PaginationState.error(e, stk);
@@ -95,7 +99,7 @@ class PaginationNotifier<T> extends StateNotifier<PaginationState<T>> {
 
     try {
       await Future.delayed(const Duration(seconds: 1));
-      final result = await fetchNextItems(items.length);
+      final result = await fetchNextItems(items.length, pageNo);
       updateData(result);
     } catch (e, stk) {
       log("Error fetching next page", error: e, stackTrace: stk);

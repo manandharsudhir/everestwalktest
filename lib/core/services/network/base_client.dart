@@ -21,7 +21,7 @@ class BaseClient {
         onRequest: (RequestOptions options, RequestInterceptorHandler r) async {
           options.headers['Accept'] = "*/*";
           options.contentType = Headers.jsonContentType;
-          options.queryParameters.addAll({"appid": dotenv.env["TMDB_KEY"]});
+          options.queryParameters.addAll({"api_key": dotenv.env["TMDB_KEY"]});
           r.next(options);
         },
         onError: (e, handler) {

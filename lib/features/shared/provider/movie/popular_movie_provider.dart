@@ -5,16 +5,15 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../pagination/model/paginated_state_model.dart';
 import '../../../pagination/provider/pagination_notifier.dart';
 
-final popularMovieProvider = StateNotifierProvider.family<
-    PaginationNotifier<MovieModel>,
-    PaginationState<MovieModel>,
-    Map<String, dynamic>>((ref, filters) {
+final popularMovieProvider = StateNotifierProvider<
+    PaginationNotifier<MovieModel>, PaginationState<MovieModel>>((ref) {
   return PaginationNotifier(
     itemsPerBatch: 20,
     fetchNextItems: (
       item,
+      page,
     ) {
-      return ref.read(movieRepo).getPopularMovies(filters: filters);
+      return ref.read(movieRepo).getPopularMovies(page: page);
     },
   )..init();
 });

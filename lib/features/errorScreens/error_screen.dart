@@ -13,9 +13,11 @@ class ErrorScreen extends HookConsumerWidget {
   final String animation;
   final String title;
   final String subtitle;
+  final bool showRefresh;
   const ErrorScreen({
     super.key,
     required this.function,
+    this.showRefresh = true,
     this.animation = "assets/animations/error.json",
     this.subtitle = "Try refreshing",
     this.title = "Something wrong occured",
@@ -40,16 +42,23 @@ class ErrorScreen extends HookConsumerWidget {
                 textAlign: TextAlign.center,
               ),
               Spacing.sizedBoxH_08(),
-              Text(
-                subtitle,
-                textAlign: TextAlign.center,
-                style: AppTextStyle.bodyMedium,
-              ),
-              Spacing.sizedBoxH_16(),
-              PrimaryButton(
-                text: "Refresh",
-                func: function,
-              ),
+              Visibility(
+                visible: showRefresh,
+                child: Column(
+                  children: [
+                    Text(
+                      subtitle,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyle.bodyMedium,
+                    ),
+                    Spacing.sizedBoxH_16(),
+                    PrimaryButton(
+                      text: "Refresh",
+                      func: function,
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         )

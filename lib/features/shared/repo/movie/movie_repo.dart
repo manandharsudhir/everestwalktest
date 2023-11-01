@@ -2,7 +2,11 @@ import 'package:everestwalktest/features/shared/model/movieModel/movie_model.dar
 
 abstract class MovieRepo {
   Future<List<MovieModel>> getPopularMovies(
-      {int page, Map<String, dynamic> filters});
+      {required int page, Map<String, dynamic> filters});
   Future<List<MovieModel>> getNowPlayingMovies(
-      {int page, Map<String, dynamic> filters});
+      {required int page, Map<String, dynamic> filters});
+  Future<List<MovieModel>> getTrendingMovies(
+      {required int page, Map<String, dynamic> filters});
+  Future<List<MovieModel>> getUpcomingMovies(
+      {required int page, Map<String, dynamic> filters});
 }
